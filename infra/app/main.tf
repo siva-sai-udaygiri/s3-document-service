@@ -95,9 +95,9 @@ resource "aws_iam_policy" "app_s3_policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Sid    = "ListBucketPrefix"
-        Effect = "Allow"
-        Action = ["s3:ListBucket"]
+        Sid      = "ListBucketPrefix"
+        Effect   = "Allow"
+        Action   = ["s3:ListBucket"]
         Resource = aws_s3_bucket.docs.arn
         Condition = {
           StringLike = {
@@ -106,15 +106,15 @@ resource "aws_iam_policy" "app_s3_policy" {
         }
       },
       {
-        Sid    = "ObjectRW"
-        Effect = "Allow"
-        Action = ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"]
+        Sid      = "ObjectRW"
+        Effect   = "Allow"
+        Action   = ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"]
         Resource = "${aws_s3_bucket.docs.arn}/${var.docs_prefix}*"
       },
       {
-        Sid    = "HeadBucket"
-        Effect = "Allow"
-        Action = ["s3:HeadBucket"]
+        Sid      = "HeadBucket"
+        Effect   = "Allow"
+        Action   = ["s3:HeadBucket"]
         Resource = aws_s3_bucket.docs.arn
       }
     ]
